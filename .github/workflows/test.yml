@@ -110,11 +110,11 @@ jobs:
       CPUD: ${{ needs.get-config.outputs.CPUD }}
       ANDROID_VERSION: ${{ needs.get-config.outputs.ANDROID_VERSION }}
       KERNEL_VERSION: ${{ needs.get-config.outputs.KERNEL_VERSION }}
-      SUSFS_CI: CI"
-      VFS: true"
-      KPM: false"
-      ZRAM: true"
-      SCHED: false"
+      SUSFS_CI: CI
+      VFS: true
+      KPM: false
+      ZRAM: true
+      SCHED: false
       CCACHE_COMPILERCHECK: "%compiler% -dumpmachine; %compiler% -dumpversion"
       CCACHE_NOHASHDIR: "true"
       CCACHE_HARDLINK: "true"
