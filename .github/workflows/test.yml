@@ -6,31 +6,7 @@ on:
         description: "配置文件"
         required: true
         default: oneplus_ace2_pro_v
-      SUFFIX:
-        type: string
-        description: "自定义内核后缀 (留空则使用随机字符串)"
-        required: false
-        default: ""
-      VFS:
-        type: boolean
-        description: "是否启用手动钩子(VFS)？"
-        required: true
-        default: true
-      KPM:
-        type: boolean
-        description: "是否启用内核模块(KPM)？"
-        required: true
-        default: true
-      SCHED:
-        type: boolean
-        description: "是否添加风驰驱动？"
-        required: true
-        default: false
-      ZRAM:
-        type: boolean
-        description: "是否添加更多的ZRAM算法？"
-        required: true
-        default: false
+
 
 jobs:
   get-config:
@@ -47,89 +23,35 @@ jobs:
           FEIL="${{ github.event.inputs.FEIL }}"
 
           case "$FEIL" in
-            oneplus_nord_ce4_v)
-              CPU="sm7550"
-              CPUD="crow"
-              ANDROID_VERSION="android14"
-              KERNEL_VERSION="5.15"
-              ;;
-            oneplus_ace_3v_v)
-              CPU="sm7675"
-              CPUD="pineapple"
-              ANDROID_VERSION="android14"
-              KERNEL_VERSION="6.1"
-              ;;
-            oneplus_nord_4_v)
-              CPU="sm7675"
-              CPUD="pineapple"
-              ANDROID_VERSION="android14"
-              KERNEL_VERSION="6.1"
-              ;;
             oneplus_10_pro_v)
               CPU="sm8450"
               CPUD="waipio"
               ANDROID_VERSION="android12"
               KERNEL_VERSION="5.10"
               ;;
-            oneplus_10_pro_s)
-              CPU="sm8450"
-              CPUD="waipio"
-              ANDROID_VERSION="android12"
-              KERNEL_VERSION="5.10"
+              oneplus_11_v)
+              CPU="sm8550"
+              CPUD="kalama"
+              ANDROID_VERSION="android13"
+              KERNEL_VERSION="5.15"
               ;;
-            oneplus_10t_v)
-              CPU="sm8475"
-              CPUD="waipio"
-              ANDROID_VERSION="android12"
-              KERNEL_VERSION="5.10"
-              ;;
-            oneplus_11r_v)
-              CPU="sm8475"
-              CPUD="waipio"
-              ANDROID_VERSION="android12"
-              KERNEL_VERSION="5.10"
-              ;;
-            oneplus_11r_u)
-              CPU="sm8475"
-              CPUD="waipio"
-              ANDROID_VERSION="android12"
-              KERNEL_VERSION="5.10"
-              ;;
-            oneplus_ace2_v)
-              CPU="sm8475"
-              CPUD="waipio"
-              ANDROID_VERSION="android12"
-              KERNEL_VERSION="5.10"
+             oneplus12_v)
+              CPU="sm8650"
+              CPUD="pineapple"
+              ANDROID_VERSION="android14"
+              KERNEL_VERSION="6.1"
               ;;
             oneplus_ace_pro_v)
               CPU="sm8475"
               CPUD="waipio"
               ANDROID_VERSION="android12"
               KERNEL_VERSION="5.10"
-              ;;
-            oneplus_11_v)
-              CPU="sm8550"
-              CPUD="kalama"
-              ANDROID_VERSION="android13"
-              KERNEL_VERSION="5.15"
-              ;;
-            oneplus_11_u)
-              CPU="sm8550"
-              CPUD="kalama"
-              ANDROID_VERSION="android13"
-              KERNEL_VERSION="5.15"
-              ;;
-            oneplus_11_t)
-              CPU="sm8550"
-              CPUD="kalama"
-              ANDROID_VERSION="android13"
-              KERNEL_VERSION="5.15"
-              ;;
-            oneplus_12r_v)
-              CPU="sm8550"
-              CPUD="kalama"
-              ANDROID_VERSION="android13"
-              KERNEL_VERSION="5.15"
+              ;;              
+              oneplus_ace2_v)
+              CPU="sm8475"
+              CPUD="waipio"
+              ANDROID_VERSION="android12"
+              KERNEL_VERSION="5.10"
               ;;
             oneplus_ace2_pro_v)
               CPU="sm8550"
@@ -143,95 +65,23 @@ jobs:
               ANDROID_VERSION="android13"
               KERNEL_VERSION="5.15"
               ;;
-            oneplus_open_v)
-              CPU="sm8550"
-              CPUD="kalama"
-              ANDROID_VERSION="android13"
-              KERNEL_VERSION="5.15"
-              ;;
-            oneplus12_v)
-              CPU="sm8650"
-              CPUD="pineapple"
-              ANDROID_VERSION="android14"
-              KERNEL_VERSION="6.1"
-              ;;
-            oneplus12_u)
-              CPU="sm8650"
-              CPUD="pineapple"
-              ANDROID_VERSION="android14"
-              KERNEL_VERSION="6.1"
-              ;;
-            oneplus_13r)
-              CPU="sm8650"
-              CPUD="pineapple"
-              ANDROID_VERSION="android14"
-              KERNEL_VERSION="6.1"
-              ;;
             oneplus_ace3_pro_v)
               CPU="sm8650"
               CPUD="pineapple"
               ANDROID_VERSION="android14"
-              KERNEL_VERSION="6.1"
+              KERNEL_VERSION="6.1"             
               ;;
-            oneplus_ace3_pro)
-              CPU="sm8650"
+            oneplus_ace_3v_v)
+              CPU="sm7675"
               CPUD="pineapple"
               ANDROID_VERSION="android14"
               KERNEL_VERSION="6.1"
-              ;;
+              ;;             
             oneplus_ace5)
               CPU="sm8650"
               CPUD="pineapple"
               ANDROID_VERSION="android14"
               KERNEL_VERSION="6.1"
-              ;;
-            oneplus_pad2_v)
-              CPU="sm8650"
-              CPUD="pineapple"
-              ANDROID_VERSION="android14"
-              KERNEL_VERSION="6.1"
-              ;;
-            oneplus_pad_pro_v)
-              CPU="sm8650"
-              CPUD="pineapple"
-              ANDROID_VERSION="android14"
-              KERNEL_VERSION="6.1"
-              ;;
-            oneplus_13)
-              CPU="sm8750"
-              CPUD="sun"
-              ANDROID_VERSION="android15"
-              KERNEL_VERSION="6.6"
-              ;;
-            oneplus_ace5_pro)
-              CPU="sm8750"
-              CPUD="sun"
-              ANDROID_VERSION="android15"
-              KERNEL_VERSION="6.6"
-              ;;
-            oneplus_13t)
-              CPU="sm8750"
-              CPUD="sun"
-              ANDROID_VERSION="android15"
-              KERNEL_VERSION="6.6"
-              ;;
-            oneplus_13s)
-              CPU="sm8750"
-              CPUD="sun"
-              ANDROID_VERSION="android15"
-              KERNEL_VERSION="6.6"
-              ;;
-            oneplus_pad_2_pro)
-              CPU="sm8750"
-              CPUD="sun"
-              ANDROID_VERSION="android15"
-              KERNEL_VERSION="6.6"
-              ;;
-            oneplus_pad_3)
-              CPU="sm8750"
-              CPUD="sun"
-              ANDROID_VERSION="android15"
-              KERNEL_VERSION="6.6"
               ;;
             *)
               echo "Unknown FEIL: $FEIL"
@@ -253,6 +103,11 @@ jobs:
       CPUD: ${{ needs.get-config.outputs.CPUD }}
       ANDROID_VERSION: ${{ needs.get-config.outputs.ANDROID_VERSION }}
       KERNEL_VERSION: ${{ needs.get-config.outputs.KERNEL_VERSION }}
+      SUSFS_CI: CI"
+      VFS: true"
+      KPM: false"
+      ZRAM: true"
+      SCHED: false"
       CCACHE_COMPILERCHECK: "%compiler% -dumpmachine; %compiler% -dumpversion"
       CCACHE_NOHASHDIR: "true"
       CCACHE_HARDLINK: "true"
@@ -294,11 +149,11 @@ jobs:
           echo "Selected ANDROID_VERSION: ${{ needs.get-config.outputs.ANDROID_VERSION }}"
           echo "Selected KERNEL_VERSION: ${{ needs.get-config.outputs.KERNEL_VERSION }}"
           echo "Custom SUFFIX: ${{ github.event.inputs.SUFFIX }}"
-          echo "Selected SUSFS_CI: ${{ github.event.inputs.SUSFS_CI }}"
-          echo "Selected VFS: ${{ github.event.inputs.VFS }}"
-          echo "Selected KPM: ${{ github.event.inputs.KPM }}"
-          echo "Selected ZRAM: ${{ github.event.inputs.ZRAM }}"
-          echo "Selected SCHED: ${{ github.event.inputs.SCHED }}"
+          echo "Selected SUSFS_CI: ${{ env.SUSFS_CI }}"
+          echo "Selected VFS: ${{ env.VFS }}"
+          echo "Selected KPM: ${{ env.KPM }}"
+          echo "Selected ZRAM: ${{ env.ZRAM }}"
+          echo "Selected SCHED: ${{ env.SCHED }}"
 
       - name: Install dependencies
         run: |
@@ -445,7 +300,7 @@ jobs:
           cp ../susfs4ksu/kernel_patches/fs/* ./common/fs/
           cp ../susfs4ksu/kernel_patches/include/linux/* ./common/include/linux/
 
-          if [ "${{ github.event.inputs.ZRAM }}" = "true" ]; then
+          if [ "${{ env.ZRAM }}" = "true" ]; then
           echo "正在打zram补丁"
           cp -r ../SukiSU_patch/other/zram/lz4k/include/linux/* ./common/include/linux
           cp -r ../SukiSU_patch/other/zram/lz4k/lib/* ./common/lib
@@ -479,7 +334,7 @@ jobs:
 
 
       - name: Apply VFS
-        if: ${{ github.event.inputs.VFS == 'true' }}
+        if: ${{ env.VFS == 'true' }}
         run: |
           cd kernel_workspace/kernel_platform/common
             cp ../../SukiSU_patch/hooks/syscall_hooks.patch ./
@@ -488,7 +343,7 @@ jobs:
             echo "vfs_patch完成"
 
       - name: Apply ZRAM
-        if: ${{ github.event.inputs.ZRAM == 'true' }}
+        if: ${{ env.ZRAM == 'true' }}
         run: |
           cd kernel_workspace/kernel_platform/common
             cp ../../SukiSU_patch/other/zram/zram_patch/${{ needs.get-config.outputs.KERNEL_VERSION }}/lz4kd.patch ./
@@ -512,7 +367,7 @@ jobs:
           echo "CONFIG_KPM=y" >> "$CONFIG_FILE"
 
           # VFS配置
-          if [ "${{ github.event.inputs.VFS }}" = "true" ]; then
+          if [ "${{ env.VFS }}" = "true" ]; then
             echo "CONFIG_KSU_SUSFS_SUS_SU=n" >> "$CONFIG_FILE"
             echo "CONFIG_KSU_MANUAL_HOOK=y" >> "$CONFIG_FILE"
           else
@@ -520,7 +375,7 @@ jobs:
           fi
 
           # SUSFS配置
-          if [ "${{ github.event.inputs.VFS }}" = "true" ]; then
+          if [ "${{ env.VFS }}" = "true" ]; then
             echo "CONFIG_KSU_SUSFS=y" >> "$CONFIG_FILE"
             echo "CONFIG_KSU_SUSFS_HAS_MAGIC_MOUNT=y" >> "$CONFIG_FILE"
             echo "CONFIG_KSU_SUSFS_SUS_PATH=y" >> "$CONFIG_FILE"
@@ -549,7 +404,7 @@ jobs:
           echo "CONFIG_TCP_CONG_HTCP=n" >> "$CONFIG_FILE"
 
           # LZ4KD配置*
-          if [ "${{ github.event.inputs.ZRAM }}" = "true" ]; then
+          if [ "${{ env.ZRAM }}" = "true" ]; then
             echo "CONFIG_CRYPTO_LZ4HC=y" >> "$CONFIG_FILE"
             echo "CONFIG_CRYPTO_LZ4K=y" >> "$CONFIG_FILE"
             echo "CONFIG_CRYPTO_LZ4KD=y" >> "$CONFIG_FILE"
@@ -562,7 +417,7 @@ jobs:
 
       # 风驰内核，以 sm8750 为主体，其他 CPU 可能无效或者无法跑出
       - name: Add sched_ext
-        if: ${{ github.event.inputs.SCHED == 'true' }}
+        if: ${{ env.SCHED == 'true' }}
         run: |
          cd kernel_workspace/kernel_platform/
          git clone https://github.com/HanKuCha/sched_ext.git
@@ -653,7 +508,7 @@ jobs:
 
 
       - name: Apply patch_linux and replace Image
-        if: ${{ github.event.inputs.KPM == 'true' }}
+        if: ${{ env.KPM == 'true' }}
         run: |
           cd kernel_workspace/kernel_platform/out/FinalImageFind
           curl -LO --retry 5 --retry-delay 2 --retry-connrefused https://raw.githubusercontent.com/Numbersf/Action-Build/SukiSU-Ultra/patches/patch_linux
@@ -715,43 +570,17 @@ jobs:
       - name: Set zip suffix
         id: suffix
         run: |
-          echo "value=${{ github.event.inputs.VFS == 'true' && '_VFS' || '' }}${{ github.event.inputs.ZRAM == 'true' && '_LZ4KD' || '' }}${{ github.event.inputs.KPM == 'true' && '_KPM' || '' }}${{ github.event.inputs.SCHED== 'true' && '_SCHED' || '' }}" >> $GITHUB_OUTPUT
+          echo "value=${{ env.VFS == 'true' && '_VFS' || '' }}${{ env.ZRAM == 'true' && '_LZ4KD' || '' }}${{ env.KPM == 'true' && '_KPM' || '' }}${{ env.SCHED== 'true' && '_SCHED' || '' }}" >> $GITHUB_OUTPUT
 
-      # 从一加源码中获取适用的 Android 版本信息，注意是系统 Android 版本而非你填写的内核 Android 版本，非一加官方源码可能需要修改或删除这一步
-      - name: Auto map FEIL to Android version by manifest
-        id: feil_clean
-        run: |
-          feil="${{ github.event.inputs.FEIL }}"
-          cpu="${{ needs.get-config.outputs.CPU }}"
-          xml=".repo/manifests_fallback/${feil}.xml"
-          cd $GITHUB_WORKSPACE
-          # 去掉末尾的 _x（只删一个）
-          feil_base=$(echo "$feil" | sed -E 's/_[a-z]$//')
-
-          # 提取 revision 并解析 Android 版本
-          revision_full=$(grep -oP '<project[^>]*name="android_kernel[^"]*"[^>]*revision="\K[^"]+' "$xml" | head -n1 || true)
-
-          if [ -n "$revision_full" ]; then
-            android_ver=$(echo "$revision_full" | grep -oP '_v?_?\K([0-9]+\.[0-9]+(?:\.[0-9]+)?)' || true)
-            if [ -n "$android_ver" ]; then
-              clean_feil="${feil_base}_Android${android_ver}"
-            else
-              clean_feil="${feil_base}_AndroidUnknown"
-            fi
-          else
-            clean_feil="${feil_base}_AndroidUnknown"
-          fi
-
-          echo "value=$clean_feil" >> "$GITHUB_OUTPUT"
 
       - name: Upload AnyKernel3
         uses: actions/upload-artifact@v4
         with:
-          name: AnyKernel3_SukiSUUltra_${{ env.KSUVER }}_${{ steps.feil_clean.outputs.value }}${{ steps.suffix.outputs.value }}
+          name: SukiSU_${{ env.KSUVER }}${{ steps.suffix.outputs.value }}
           path: ./AnyKernel3/*
 
       - name: Download And Unzip ZRAM
-        if: ${{ github.event.inputs.ZRAM == 'true' }}
+        if: ${{ env.ZRAM == 'true' }}
         run: |
           set -e
           sudo apt install -y unzip
@@ -793,7 +622,7 @@ jobs:
           fi
 
       - name: Upload ZRAM Module
-        if: ${{ github.event.inputs.ZRAM == 'true' }}
+        if: ${{ env.ZRAM == 'true' }}
         uses: actions/upload-artifact@v4
         with:
           name: ZRAM-Module_${{ needs.get-config.outputs.KERNEL_VERSION }}_${{ steps.feil_clean.outputs.value }}
