@@ -27,7 +27,7 @@ jobs:
       - name: Map FEIL to Config
         id: set
         run: |
-          FEIL="${{ github.event.inputs.FEIL }}"
+          FEIL="${{ inputs.FEIL }}"
 
           case "$FEIL" in
             oneplus_10_pro_v)
@@ -103,7 +103,7 @@ jobs:
 
   build:
     needs: get-config
-    name: For ${{ github.event.inputs.FEIL }}
+    name: For ${{ inputs.FEIL }}
     runs-on: ubuntu-latest
     env:
       CPU: ${{ needs.get-config.outputs.CPU }}
@@ -151,11 +151,11 @@ jobs:
       - name: Show selected inputs debug
         run: |
           echo "Selected CPU: ${{ needs.get-config.outputs.CPU }}"
-          echo "Selected FEIL: ${{ github.event.inputs.FEIL }}"
+          echo "Selected FEIL: ${{ inputs.FEIL }}"
           echo "Selected CPUD: ${{ needs.get-config.outputs.CPUD }}"
           echo "Selected ANDROID_VERSION: ${{ needs.get-config.outputs.ANDROID_VERSION }}"
           echo "Selected KERNEL_VERSION: ${{ needs.get-config.outputs.KERNEL_VERSION }}"
-          echo "Custom SUFFIX: ${{ github.event.inputs.SUFFIX }}"
+          echo "Custom SUFFIX: ${{ inputs.SUFFIX }}"
           echo "Selected SUSFS_CI: ${{ env.SUSFS_CI }}"
           echo "Selected VFS: ${{ env.VFS }}"
           echo "Selected KPM: ${{ env.KPM }}"
@@ -191,7 +191,7 @@ jobs:
 
       # 自定义内核后缀
       - name: Modify setlocalversion suffix if SUFFIX is set
-        if: ${{ github.event.inputs.SUFFIX != '' }}
+        if: ${{ inputs.SUFFIX != '' }}
         run: |
           cd kernel_workspace
           SUFFIX="${{ github.event.inputs.SUFFIX }}"
@@ -232,7 +232,7 @@ jobs:
 
       # 自动生成随机后缀（仅在 SUFFIX 未设置时生效）*
       - name: Generate random kernel suffix if SUFFIX is empty
-        if: ${{ github.event.inputs.SUFFIX == '' }}
+        if: ${{ inputs.SUFFIX == '' }}
         run: |
           cd kernel_workspace
           ANDROID_VERSION="${{ needs.get-config.outputs.ANDROID_VERSION }}"
