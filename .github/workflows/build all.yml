@@ -8,15 +8,15 @@ on:
         description: "自定义内核后缀 (留空则使用随机字符串)"
         required: false
         default: "QQQiuCi-SukiSU-Test-Build"
-        ace_pro:
-        description: "ace_pro"
+       ace_pro:
+        description: "acepro测试"
         type: boolean
         default: false
 
 
 jobs:
   ace_pro:
-    if: ${{ github.event.inputs.ace5pro_no_kpm == 'true' }}
+    if: ${{ github.event.inputs.ace_pro == 'true' }}
     uses: ./.github/workflows/test.yml
     secrets: inherit
     with:
