@@ -20,6 +20,6 @@ jobs:
     uses: ./.github/workflows/test.yml
     secrets: inherit
     with:
-      SUFFIX: ${{ github.event.inputs.SUFFIX }}
+      SUFFIX: ${{ github.event.inputs.SUFFIXX }}
 
 
