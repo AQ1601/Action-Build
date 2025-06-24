@@ -514,16 +514,7 @@ jobs:
           fi
 
 
-      - name: Apply patch_linux and replace Image
-        if: ${{ env.KPM == 'true' }}
-        run: |
-          cd kernel_workspace/kernel_platform/out/FinalImageFind
-          curl -LO --retry 5 --retry-delay 2 --retry-connrefused https://raw.githubusercontent.com/Numbersf/Action-Build/SukiSU-Ultra/patches/patch_linux
-          chmod +x patch_linux
-          ./patch_linux
-          rm -f Image
-          mv oImage Image
-          cp Image $GITHUB_WORKSPACE/AnyKernel3/Image
+
 
       # 下载 SUSFS 模块（CI）
       - name: Download Latest SUSFS Module from CI
@@ -547,32 +538,6 @@ jobs:
             fi
           fi
 
-
-      # 解压 SukiSU Ultra（CI）（不自动安装）
-      - name: Download Latest SukiSU-Ultra APK from CI
-        continue-on-error: true
-        env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-        run: |
-          run_id=$(gh api \
-            "repos/SukiSU-Ultra/SukiSU-Ultra/actions/workflows/build-manager.yml/runs?branch=main&status=success&per_page=1" \
-            --jq '.workflow_runs[0].id' || echo "")
-
-          if [[ -z "$run_id" ]]; then
-            echo "⚠️ No successful workflow run found. Skipping artifact download."
-          else
-            artifact_url=$(gh api \
-              "repos/SukiSU-Ultra/SukiSU-Ultra/actions/runs/$run_id/artifacts" | \
-              jq -r '.artifacts[] | select(.name == "manager") | .archive_download_url' | head -n1)
-
-            if [[ -z "$artifact_url" ]]; then
-              echo "⚠️ No 'manager' artifact found in run $run_id. Skipping download."
-            else
-              echo "✅ Downloading from: $artifact_url"
-              curl -fL -H "Authorization: token $GITHUB_TOKEN" -o manager.zip "$artifact_url"
-              unzip -j manager.zip "*.apk" -d ./AnyKernel3/
-            fi
-          fi
 
       - name: Set zip suffix
         id: suffix
