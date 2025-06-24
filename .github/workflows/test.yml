@@ -7,6 +7,10 @@ on:
         description: "配置文件"
         required: true
         default: oneplus_ace_pro_v
+      SUFFIX: 
+        description: "从主工作流传递的后缀"
+        required: false
+        default: ""
 
 
 jobs:
