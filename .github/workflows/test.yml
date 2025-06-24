@@ -184,7 +184,7 @@ jobs:
       - name: Initialize repo and sync
         run: |
           mkdir kernel_workspace && cd kernel_workspace
-          repo init -u https://github.com/OnePlusOSS/kernel_manifest.git -b refs/heads/oneplus/${{ needs.get-config.outputs.CPU }} -m ${{ github.event.inputs.FEIL }}.xml --depth=1
+          repo init -u https://github.com/OnePlusOSS/kernel_manifest.git -b refs/heads/oneplus/${{ needs.get-config.outputs.CPU }} -m ${{ inputs.FEIL }}.xml --depth=1
           repo sync -c -j$(nproc --all) --no-tags --no-clone-bundle --force-sync
           rm kernel_platform/common/android/abi_gki_protected_exports_* || echo "No protected exports!"
           rm kernel_platform/msm-kernel/android/abi_gki_protected_exports_* || echo "No protected exports!"
@@ -194,7 +194,7 @@ jobs:
         if: ${{ inputs.SUFFIX != '' }}
         run: |
           cd kernel_workspace
-          SUFFIX="${{ github.event.inputs.SUFFIX }}"
+          SUFFIX="${{ inputs.SUFFIX }}"
           ANDROID_VERSION="${{ needs.get-config.outputs.ANDROID_VERSION }}"
 
           for path in \
@@ -278,7 +278,7 @@ jobs:
       - name: Download kernel-manifest
         id: fetch_manifest
         run: |
-          feil="${{ github.event.inputs.FEIL }}"
+          feil="${{ inputs.FEIL }}"
           cpu="${{ needs.get-config.outputs.CPU }}"
           mkdir -p .repo/manifests_fallback
           echo "Downloading manifest $feil.xml from branch oneplus/$cpu..."
@@ -326,7 +326,7 @@ jobs:
             echo "fix_5.15_patch完成"
           fi
           KERNEL_VERSION="${{ needs.get-config.outputs.KERNEL_VERSION }}"
-          feil="${{ github.event.inputs.FEIL }}"
+          feil="${{ inputs.FEIL }}"
           TRUSTY_EXISTS="false"
           patch -p1 < 50_add_susfs_in_gki-${{ needs.get-config.outputs.ANDROID_VERSION }}-${{ needs.get-config.outputs.KERNEL_VERSION }}.patch || true
           echo "susfs_patch完成"
