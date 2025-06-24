@@ -21,5 +21,6 @@ jobs:
     secrets: inherit
     with:
       SUFFIX: ${{ github.event.inputs.SUFFIXX }}
+      FEIL: "oneplus_ace_pro_v"
 
 
