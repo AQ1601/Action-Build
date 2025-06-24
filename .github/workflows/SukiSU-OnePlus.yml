@@ -112,7 +112,7 @@ jobs:
       KERNEL_VERSION: ${{ needs.get-config.outputs.KERNEL_VERSION }}
       SUSFS_CI: CI
       VFS: true
-      KPM: false
+      KPM: true
       ZRAM: true
       SCHED: false
       CCACHE_COMPILERCHECK: "%compiler% -dumpmachine; %compiler% -dumpversion"
